@@ -1,81 +1,10 @@
-def testGlobalParam = 'testenv'
-pipeline{
+pipeline {
     agent any
-    parameters { 
-        string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '')
-        text(name: 'DEPLOY_TEXT', defaultValue: 'One\nTwo\nThree\n', description: '')
-        booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
-        choice(name: 'env_test', choices: ['test', 'qa', 'prod'], description: '') 
-        
-    }
-    stages{
-        stage('test the pipeline'){
-            steps{
-                script{
-                    def DEPLOY_ENVtest = 'staging'
-                    print 'deploying on prod'
-                    print DEPLOY_ENV
-                    print DEPLOY_TEXT
-                    print DEBUG_BUILD
-                    print env_test
-                    print DEPLOY_ENVtest
-                    print testGlobalParam
-                }
-            }
-        }
-        stage('deploy when staging'){
-            when {
-                expression {
-                    DEPLOY_ENV == 'staging'
-                }
-            }
-            steps{
-                script{
-                    def DEPLOY_ENVtest = 'prod'
-                    echo 'deploying on staging'
-                    print DEPLOY_ENVtest
-                    print testGlobalParam
-                }
-            }
-        }
-        stage('deploy when boolean'){
-            when {
-                expression {
-                    DEBUG_BUILD == 'true'
-                }
-            }
-            steps{
-                echo 'deploying on qa on boolean'
-            }
-        }
-        stage('deploy on test'){
-            when {
-                expression {
-                    env_test == 'test'
-                }
-            }
-            steps{
-                echo 'deploying on(test) qa on choice'
-            }
-        }
-        stage('deploy on qa'){
-            when {
-                expression {
-                    env_test == 'qa'
-                }
-            }
-            steps{
-                echo 'deploying on(qa) qa on choice'
-            }
-        }
-        stage('deploy on prod'){
-            when {
-                expression {
-                    env_test == 'prod'
-                }
-            }
-            steps{
-                echo 'deploying on(prod) qa on choice'
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
             }
         }
     }
