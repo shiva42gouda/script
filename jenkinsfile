@@ -3,7 +3,7 @@ banzai([
   cleanWorkspace: [
     pre: true
   ],
-  // gitTokenId: 'banzai-git-token-user-pass',
+  gitTokenId: 'github-hello',
   build: [
     /.*/ : [:]
   ],
