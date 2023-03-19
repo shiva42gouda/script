@@ -1,0 +1,10 @@
+banzai([
+  appName: 'banzai',
+  cleanWorkspace: [
+    pre: true
+  ],
+  // gitTokenId: 'banzai-git-token-user-pass',
+  build: [
+    /.*/ : [:]
+  ],
+])
